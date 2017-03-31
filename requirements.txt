@@ -7,3 +7,5 @@ flask-assets
 flask-bcrypt
 flask-scrypt
 flask-classy
+libsass
+jsmin

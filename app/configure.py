@@ -1,7 +1,5 @@
 
-
-# Blueprints
-from .home import bp_home
+import os
 
 
 def flask_app(app):
@@ -22,4 +20,20 @@ def flask_db(db):
 
 
 def flask_blueprints(app):
+    from .home import bp_home
+
     app.register_blueprint(bp_home)
+
+
+def flask_assets(app, assets):
+    from .assets import ASSET_DIRS
+    from .assets import ASSETS
+
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    assets.set_directory(os.path.join(dir_path, 'static'))
+
+    for asset_dir in ASSET_DIRS:
+        assets.append_path(os.path.join(dir_path, asset_dir))
+
+    for asset_name, asset in ASSETS.items():
+        assets.register(asset_name, asset)

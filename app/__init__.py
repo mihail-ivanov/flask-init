@@ -3,6 +3,7 @@
 from flask import Flask
 from flask import render_template
 from flask_sqlalchemy import SQLAlchemy
+from flask_assets import Environment
 
 
 # Define the WSGI application object
@@ -12,6 +13,10 @@ app = Flask(__name__, instance_relative_config=True)
 # Define the database object which is imported
 # by modules and controllers
 db = SQLAlchemy(app)
+
+
+# Configure flask assets
+assets = Environment(app)
 
 
 # Sample HTTP error handling
@@ -26,3 +31,4 @@ from . import configure
 configure.flask_app(app)
 configure.flask_db(db)
 configure.flask_blueprints(app)
+configure.flask_assets(app, assets)
