@@ -7,3 +7,4 @@ flask-assets
 flask-bcrypt
 flask-scrypt
 flask-classy
+flask-webpack

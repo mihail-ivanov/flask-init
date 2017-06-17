@@ -3,6 +3,7 @@
     <head>
         <title>{% block title %}{% endblock %}</title>
 
+        {% include '_global_css.html' %}
         {% block css %}{% endblock %}
     </head>
     <body>
@@ -10,9 +11,7 @@
             {% block content %}{% endblock %}
         </div>
 
-        {% block base_js %}
-        {% endblock %}
-
+        {% include '_global_js.html' %}
         {% block js %}{% endblock %}
   </body>
 </html>

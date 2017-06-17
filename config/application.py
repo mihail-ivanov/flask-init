@@ -3,9 +3,11 @@ import os
 
 from flask import Flask
 from flask import render_template
+from flask import send_from_directory
 from flask_assets import Environment
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
+from flask_webpack import Webpack
 
 from config.environments import app_config
 
@@ -21,8 +23,8 @@ def create_app():
     app = Flask(
         __name__,
         instance_relative_config=True,
-        static_url_path='/static',
-        static_folder='../static',
+        static_url_path='/public',
+        static_folder='../../public',
     )
 
     app.config.from_object(app_config[get_config_name()])
@@ -34,9 +36,13 @@ def create_app():
     # Migrations
     migrate = Migrate(app, db)
 
+    # Webpack
+    webpack = Webpack(app)
+
     configure_migrations(app, db, migrate)
     configure_error_handlers(app)
     configure_views(app)
+    configure_assets(app)
 
     return app
 
@@ -59,3 +65,9 @@ def configure_error_handlers(app):
     @app.route('/favicon.ico')
     def favicon():
         return ''
+
+
+def configure_assets(app):
+    @app.route("/assets/<path:filename>")
+    def send_asset(filename):
+        return send_from_directory(os.path.join(app.config['BASE_DIR'], 'public'), filename)

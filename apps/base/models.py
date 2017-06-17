@@ -1,5 +1,5 @@
 
-from config.application import db
+from config import db
 
 
 class BaseModel(db.Model):

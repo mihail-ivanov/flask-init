@@ -72,3 +72,10 @@ env/
 .venv
 venv/
 ENV/
+
+
+# Project specific
+app/assets/vendor
+static/webassets-external
+node_modules
+

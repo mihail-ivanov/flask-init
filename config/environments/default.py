@@ -17,3 +17,5 @@ class DefaultConfig(object):
     # SERVER_NAME = 'example.com'
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+    WEBPACK_MANIFEST_PATH = os.path.join(BASE_DIR, 'manifest.json')
