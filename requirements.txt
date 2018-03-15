@@ -3,7 +3,7 @@ flask-sqlalchemy
 flask-migrate
 flask-login
 flask-wtf
-flask-assets
 flask-bcrypt
 flask-scrypt
 flask-classy
+flask-script

@@ -7,4 +7,4 @@ class IndexView(FlaskView):
     route_base = '/'
 
     def index(self):
-        return render_template('base/index.html')
+        return render_template('api/index.html')
